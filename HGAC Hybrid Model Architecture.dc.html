@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_ds/hgac-design-system-33204c6f-bb5e-458e-ab72-346f32de4f33/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/hgac-design-system-33204c6f-bb5e-458e-ab72-346f32de4f33/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/hgac-design-system-33204c6f-bb5e-458e-ab72-346f32de4f33/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/hgac-design-system-33204c6f-bb5e-458e-ab72-346f32de4f33/styles.css">
+  <script src="_ds/hgac-design-system-33204c6f-bb5e-458e-ab72-346f32de4f33/_ds_bundle.js"></script>
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; background: #f5f7f9; }
+    a { color: #005a8c; } a:hover { color: #003f66; }
+    @keyframes dashflow { to { stroke-dashoffset: -26; } }
+    @keyframes calpulse { 0%,100% { opacity: 1; } 50% { opacity: .55; } }
+  </style>
+</helmet>
+<div style="{{ grayStyle }}">
+  <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 12px 20px; background: #ffffff; border-bottom: 1px solid #d4dbe2">
+    <div style="display: flex; align-items: center; gap: 12px">
+      <div style="width: 34px; height: 34px; background: #d7213f; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 11px; letter-spacing: .5px">TM</div>
+      <div>
+        <div style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 17px; color: #131a20">H-GAC 2023 hybrid model</div>
+        <div style="font-family: Inter, sans-serif; font-size: 11.5px; color: #647380; white-space: nowrap">Execution order → · decision unit ↕</div>
+      </div>
+    </div>
+    <div style="flex: 1"></div>
+    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="primary" size="sm" onClick="{{ togglePlay }}" hint-size="90px,36px">{{ playLabel }}</x-import>
+      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="secondary" size="sm" onClick="{{ prev }}" hint-size="60px,36px"><span style="white-space: nowrap">‹ Back</span></x-import>
+      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="secondary" size="sm" onClick="{{ next }}" hint-size="60px,36px"><span style="white-space: nowrap">Next ›</span></x-import>
+      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="ghost" size="sm" onClick="{{ restart }}" hint-size="70px,36px">Restart</x-import>
+      <div style="width: 1px; height: 24px; background: #d4dbe2"></div>
+      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="secondary" size="sm" onClick="{{ viewFull }}" hint-size="90px,36px"><span style="white-space: nowrap">Full view</span></x-import>
+      <div style="width: 1px; height: 24px; background: #d4dbe2"></div>
+      <x-import component-from-global-scope="HGACDesignSystem_33204c.Switch" label="Calibration" dc-props="{{ switchProps }}" hint-size="120px,28px"></x-import>
+    </div>
+  </div>
+  <div style="flex: 1; display: flex; min-height: 0">
+    <div style="flex: 1; min-width: 0; background: #ffffff; overflow: hidden">
+      <svg viewBox="0 0 1800 940" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; display: block">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#33404c"></path></marker>
+          <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#005a8c"></path></marker>
+        </defs>
+        <g style="{{ camStyle }}">
+          <text transform="translate(24,470) rotate(-90)" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" letter-spacing="2.5" fill="#8a99a6">disaggregate ◂ · DECISION UNIT · ▸ aggregate</text>
+          <line x1="155" y1="150" x2="1790" y2="150" stroke="#d4dbe2" stroke-dasharray="3 7"></line>
+          <line x1="155" y1="290" x2="1790" y2="290" stroke="#d4dbe2" stroke-dasharray="3 7"></line>
+          <line x1="155" y1="430" x2="1790" y2="430" stroke="#d4dbe2" stroke-dasharray="3 7"></line>
+          <line x1="155" y1="580" x2="1790" y2="580" stroke="#d4dbe2" stroke-dasharray="3 7"></line>
+          <line x1="155" y1="740" x2="1790" y2="740" stroke="#d4dbe2" stroke-dasharray="3 7"></line>
+          <text x="142" y="154" text-anchor="end" font-family="Montserrat, sans-serif" font-weight="700" font-size="13" fill="#4a5764">Network link</text>
+          <text x="142" y="294" text-anchor="end" font-family="Montserrat, sans-serif" font-weight="700" font-size="13" fill="#4a5764">OD matrix</text>
+          <text x="142" y="434" text-anchor="end" font-family="Montserrat, sans-serif" font-weight="700" font-size="13" fill="#4a5764">Tour</text>
+          <text x="142" y="584" text-anchor="end" font-family="Montserrat, sans-serif" font-weight="700" font-size="13" fill="#4a5764">Trip</text>
+          <text x="142" y="744" text-anchor="end" font-family="Montserrat, sans-serif" font-weight="700" font-size="13" fill="#4a5764">Household</text>
+
+          <rect x="152" y="522" width="898" height="300" rx="16" fill="#005a8c" fill-opacity="0.045"></rect>
+          <text x="166" y="550" font-family="Montserrat, sans-serif" font-weight="800" font-size="12" letter-spacing="2.5" fill="#005a8c" opacity="0.9">REGIONAL DEMAND · AGENT</text>
+          <rect x="1190" y="95" width="580" height="258" rx="16" fill="#002d4a" fill-opacity="0.045"></rect>
+          <text x="1204" y="122" font-family="Montserrat, sans-serif" font-weight="800" font-size="12" letter-spacing="2.5" fill="#003f66" opacity="0.9">AGGREGATE ASSIGNMENT · CUBE</text>
+          <rect x="152" y="522" width="898" height="300" rx="16" fill="none" stroke="#005a8c" stroke-width="2.5" style="{{ gStyle }}"></rect>
+          <rect x="1190" y="95" width="580" height="258" rx="16" fill="none" stroke="#005a8c" stroke-width="2.5" style="{{ gStyle }}"></rect>
+          <rect x="322" y="354" width="672" height="132" rx="16" fill="none" stroke="#005a8c" stroke-width="2.5" style="{{ gStyle }}"></rect>
+
+          <path d="M260,320 L260,700" fill="none" stroke="#33404c" stroke-width="2" marker-end="url(#arr)"></path>
+          <path d="M360,740 L381,740" fill="none" stroke="#33404c" stroke-width="2" marker-end="url(#arr)"></path>
+          <path d="M585,740 L690,740 Q710,740 710,721 L710,620" fill="none" stroke="#33404c" stroke-width="2" marker-end="url(#arr)"></path>
+          <path d="M810,580 L831,580" fill="none" stroke="#33404c" stroke-width="2" marker-end="url(#arr)"></path>
+          <path d="M1035,580 L1056,580" fill="none" stroke="#33404c" stroke-width="2" marker-end="url(#arr)"></path>
+          <path d="M1190,290 L1206,290" fill="none" stroke="#33404c" stroke-width="2" marker-end="url(#arr)"></path>
+          <path d="M1380,290 L1396,290" fill="none" stroke="#33404c" stroke-width="2" marker-end="url(#arr)"></path>
+          <path d="M1550,290 L1590,290 Q1610,290 1610,271 L1610,190" fill="none" stroke="#33404c" stroke-width="2" marker-end="url(#arr)"></path>
+          <path d="M986,430 L998,430 Q1006,430 1006,422 L1006,238 Q1006,230 1014,230 L1287,230 Q1295,230 1295,238 L1295,250" fill="none" stroke="#33404c" stroke-width="2" marker-end="url(#arr)"></path>
+          <path d="M1670,190 L1670,497 Q1670,505 1662,505 L943,505 Q935,505 935,513 L935,540" fill="none" stroke="#005a8c" stroke-width="2.2" stroke-dasharray="7 7" marker-end="url(#arrB)"></path>
+          <path d="M1670,190 L1670,497 Q1670,505 1662,505 L718,505 Q710,505 710,513 L710,540" fill="none" stroke="#005a8c" stroke-width="2.2" stroke-dasharray="7 7" marker-end="url(#arrB)"></path>
+          <rect x="1207" y="520" width="186" height="30" rx="15" fill="#ffffff" stroke="#005a8c" stroke-width="1.5" stroke-dasharray="6 5"></rect>
+          <text x="1300" y="539" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#003f66">AM + MD skims only</text>
+
+          <path d="{{ p1 }}" fill="none" stroke="#3399cc" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="5 21" style="{{ p1s }}"></path>
+          <path d="{{ p2 }}" fill="none" stroke="#3399cc" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="5 21" style="{{ p2s }}"></path>
+
+          <g>
+            <rect x="160" y="256" width="200" height="64" rx="8" fill="#f5f7f9" stroke="#8a99a6" stroke-width="1.5" stroke-dasharray="5 4"></rect>
+            <text x="260" y="283" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="14" fill="#33404c">Zonal control totals</text>
+            <text x="260" y="303" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#647380">households · employment, by zone</text>
+          </g>
+
+          <g style="cursor: pointer" onClick="{{ pick.demo }}">
+            <rect x="154" y="698" width="212" height="84" rx="13" fill="none" stroke="#d7213f" stroke-width="3.5" style="{{ hl.demo }}"></rect>
+            <rect x="160" y="704" width="200" height="72" rx="10" fill="#005a8c"></rect>
+            <circle cx="176" cy="704" r="12" fill="#212b34"></circle>
+            <text x="176" y="708.5" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="#ffffff">1</text>
+            <text x="260" y="737" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="15.5" fill="#ffffff">Population synthesis</text>
+            <text x="260" y="759" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#cceeff">controls → synthetic households</text>
+          </g>
+
+          <g style="cursor: pointer" onClick="{{ pick.tg }}">
+            <rect x="379" y="698" width="212" height="84" rx="13" fill="none" stroke="#d7213f" stroke-width="3.5" style="{{ hl.tg }}"></rect>
+            <rect x="385" y="704" width="200" height="72" rx="10" fill="#005a8c"></rect>
+            <circle cx="401" cy="704" r="12" fill="#212b34"></circle>
+            <text x="401" y="708.5" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="#ffffff">2</text>
+            <text x="485" y="737" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="15.5" fill="#ffffff">Trip generation</text>
+            <text x="485" y="759" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#cceeff">cross-class rates · HB → tours</text>
+          </g>
+
+          <g style="cursor: pointer" onClick="{{ pick.td }}">
+            <rect x="604" y="538" width="212" height="84" rx="13" fill="none" stroke="#d7213f" stroke-width="3.5" style="{{ hl.td }}"></rect>
+            <rect x="610" y="544" width="200" height="72" rx="10" fill="#005a8c"></rect>
+            <circle cx="626" cy="544" r="12" fill="#212b34"></circle>
+            <text x="626" y="548.5" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="#ffffff">3</text>
+            <text x="710" y="569" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="15.5" fill="#ffffff">Trip distribution</text>
+            <text x="710" y="589" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#cceeff">location choice · log K-factors</text>
+            <text x="710" y="605" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#cceeff">HB tours · NHB trips</text>
+          </g>
+
+          <g style="cursor: pointer" onClick="{{ pick.mc }}">
+            <rect x="829" y="538" width="212" height="84" rx="13" fill="none" stroke="#d7213f" stroke-width="3.5" style="{{ hl.mc }}"></rect>
+            <rect x="835" y="544" width="200" height="72" rx="10" fill="#005a8c"></rect>
+            <circle cx="851" cy="544" r="12" fill="#212b34"></circle>
+            <text x="851" y="548.5" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="#ffffff">4</text>
+            <text x="935" y="569" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="15.5" fill="#ffffff">Mode choice</text>
+            <text x="935" y="589" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#cceeff">nested logit · auto·transit·TNC</text>
+            <text x="935" y="605" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#cceeff">HB tours · NHB trips</text>
+          </g>
+
+          <g style="cursor: pointer" onClick="{{ pick.reagg }}">
+            <rect x="1054" y="251" width="142" height="368" rx="15" fill="none" stroke="#d7213f" stroke-width="3.5" style="{{ hl.reagg }}"></rect>
+            <rect x="1060" y="257" width="130" height="356" rx="12" fill="#ffffff" stroke="#d7213f" stroke-width="3"></rect>
+            <circle cx="1076" cy="257" r="12" fill="#d7213f"></circle>
+            <text x="1076" y="261.5" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="#ffffff">5</text>
+            <path d="M1100,330 L1125,314 L1150,330" fill="none" stroke="#d7213f" stroke-width="3" stroke-linecap="round"></path>
+            <path d="M1100,368 L1125,352 L1150,368" fill="none" stroke="#d7213f" stroke-width="3" stroke-linecap="round"></path>
+            <text x="1125" y="424" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="14.5" fill="#131a20">Re-aggregation</text>
+            <text x="1125" y="445" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#4a5764">records →</text>
+            <text x="1125" y="461" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#4a5764">OD matrices</text>
+            <path d="M1100,516 L1125,500 L1150,516" fill="none" stroke="#d7213f" stroke-width="3" stroke-linecap="round"></path>
+            <path d="M1100,554 L1125,538 L1150,554" fill="none" stroke="#d7213f" stroke-width="3" stroke-linecap="round"></path>
+            <text x="1125" y="596" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="600" font-size="10" fill="#a61f36">AGENT → CUBE</text>
+          </g>
+
+          <g style="cursor: pointer" onClick="{{ pick.air }}">
+            <rect x="314" y="348" width="688" height="144" rx="15" fill="none" stroke="#d7213f" stroke-width="3.5" style="{{ hl.air }}"></rect>
+            <rect x="330" y="362" width="656" height="116" rx="12" fill="#ffffff" stroke="#002d4a" stroke-width="2"></rect>
+            <circle cx="346" cy="362" r="12" fill="#212b34"></circle>
+            <text x="346" y="366.5" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="11" fill="#ffffff">A</text>
+            <text x="372" y="389" font-family="Montserrat, sans-serif" font-weight="700" font-size="14.5" fill="#131a20">Airport submodels — IAH &amp; HOU, run in parallel</text>
+            <text x="372" y="409" font-family="Inter, sans-serif" font-size="12" fill="#4a5764">tour-based · ActivitySim → AGENT packages</text>
+            <rect x="336" y="428" width="98" height="38" rx="7" fill="#005a8c" stroke="#003f66" stroke-width="1.5"></rect>
+            <text x="385" y="452" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11.5" fill="#ffffff">Enplanements</text>
+            <line x1="436" y1="447" x2="442" y2="447" stroke="#647380" stroke-width="1.5" marker-end="url(#arr)"></line>
+            <rect x="444" y="428" width="98" height="38" rx="7" fill="#005a8c" stroke="#003f66" stroke-width="1.5"></rect>
+            <text x="493" y="452" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11.5" fill="#ffffff">Travel parties</text>
+            <line x1="544" y1="447" x2="550" y2="447" stroke="#647380" stroke-width="1.5" marker-end="url(#arr)"></line>
+            <rect x="552" y="428" width="98" height="38" rx="7" fill="#005a8c" stroke="#003f66" stroke-width="1.5"></rect>
+            <text x="601" y="452" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11.5" fill="#ffffff">Tour generation</text>
+            <line x1="652" y1="447" x2="658" y2="447" stroke="#647380" stroke-width="1.5" marker-end="url(#arr)"></line>
+            <rect x="660" y="428" width="98" height="38" rx="7" fill="#005a8c" stroke="#003f66" stroke-width="1.5"></rect>
+            <text x="709" y="452" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11.5" fill="#ffffff">Scheduling</text>
+            <line x1="760" y1="447" x2="766" y2="447" stroke="#647380" stroke-width="1.5" marker-end="url(#arr)"></line>
+            <rect x="768" y="428" width="98" height="38" rx="7" fill="#005a8c" stroke="#003f66" stroke-width="1.5"></rect>
+            <text x="817" y="452" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11.5" fill="#ffffff">Dest + mode</text>
+            <line x1="868" y1="447" x2="874" y2="447" stroke="#647380" stroke-width="1.5" marker-end="url(#arr)"></line>
+            <rect x="876" y="428" width="98" height="38" rx="7" fill="#005a8c" stroke="#003f66" stroke-width="1.5"></rect>
+            <text x="925" y="452" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="11.5" fill="#ffffff">Tours → trips</text>
+          </g>
+
+          <g style="cursor: pointer" onClick="{{ pick.merge }}">
+            <rect x="1204" y="248" width="182" height="84" rx="13" fill="none" stroke="#d7213f" stroke-width="3.5" style="{{ hl.merge }}"></rect>
+            <rect x="1210" y="254" width="170" height="72" rx="10" fill="#ffffff" stroke="#002d4a" stroke-width="2"></rect>
+            <circle cx="1226" cy="254" r="12" fill="#212b34"></circle>
+            <text x="1226" y="258.5" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="#ffffff">6</text>
+            <text x="1295" y="285" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="14.5" fill="#131a20">Matrix combination</text>
+            <text x="1295" y="307" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#4a5764">regional + airport</text>
+          </g>
+
+          <g style="cursor: pointer" onClick="{{ pick.tod }}">
+            <rect x="1394" y="248" width="162" height="84" rx="13" fill="none" stroke="#d7213f" stroke-width="3.5" style="{{ hl.tod }}"></rect>
+            <rect x="1400" y="254" width="150" height="72" rx="10" fill="#ffffff" stroke="#002d4a" stroke-width="2"></rect>
+            <circle cx="1416" cy="254" r="12" fill="#212b34"></circle>
+            <text x="1416" y="258.5" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="#ffffff">7</text>
+            <text x="1475" y="285" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="15.5" fill="#131a20">Time of day</text>
+            <text x="1475" y="307" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#4a5764">AM · MD · PM · OV</text>
+          </g>
+
+          <g style="cursor: pointer" onClick="{{ pick.asg }}">
+            <rect x="1564" y="108" width="212" height="84" rx="13" fill="none" stroke="#d7213f" stroke-width="3.5" style="{{ hl.asg }}"></rect>
+            <rect x="1570" y="114" width="200" height="72" rx="10" fill="#ffffff" stroke="#002d4a" stroke-width="2"></rect>
+            <circle cx="1586" cy="114" r="12" fill="#212b34"></circle>
+            <text x="1586" y="118.5" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" fill="#ffffff">8</text>
+            <text x="1670" y="147" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="15.5" fill="#131a20">Assignment</text>
+            <text x="1670" y="168" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="#4a5764">multiclass UE · BCFW</text>
+            <text x="1670" y="212" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#647380">PM &amp; OV assigned after convergence</text>
+          </g>
+
+          <g style="{{ calStyle }}" pointer-events="none">
+            <rect x="170" y="60" width="560" height="58" rx="10" fill="#fdecef" stroke="#d7213f" stroke-width="1.5"></rect>
+            <text x="188" y="84" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" letter-spacing="1.5" fill="#a61f36">AGENT AUTOMATED CALIBRATION</text>
+            <text x="188" y="103" font-family="Inter, sans-serif" font-size="12" fill="#33404c">Generation, distribution, mode choice vs 2022–24 HTS + 2022 on-board survey · assignment vs counts + VMT.</text>
+            <g transform="translate(585,701)" style="animation: calpulse 2s ease-in-out infinite"><circle r="12" fill="#ffffff" stroke="#d7213f" stroke-width="2.5"></circle><circle r="6" fill="none" stroke="#d7213f" stroke-width="1.5"></circle><circle r="2" fill="#d7213f"></circle></g>
+            <g transform="translate(810,540)" style="animation: calpulse 2s ease-in-out infinite"><circle r="12" fill="#ffffff" stroke="#d7213f" stroke-width="2.5"></circle><circle r="6" fill="none" stroke="#d7213f" stroke-width="1.5"></circle><circle r="2" fill="#d7213f"></circle></g>
+            <g transform="translate(1035,540)" style="animation: calpulse 2s ease-in-out infinite"><circle r="12" fill="#ffffff" stroke="#d7213f" stroke-width="2.5"></circle><circle r="6" fill="none" stroke="#d7213f" stroke-width="1.5"></circle><circle r="2" fill="#d7213f"></circle></g>
+            <g transform="translate(1770,110)" style="animation: calpulse 2s ease-in-out infinite"><circle r="12" fill="#ffffff" stroke="#d7213f" stroke-width="2.5"></circle><circle r="6" fill="none" stroke="#d7213f" stroke-width="1.5"></circle><circle r="2" fill="#d7213f"></circle></g>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div style="width: 360px; flex-shrink: 0; border-left: 1px solid #d4dbe2; background: #ffffff; padding: 20px 22px; overflow-y: auto">
+      <sc-if value="{{ hasD }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8a99a6; letter-spacing: 2px">STEP {{ d.ord }}</div>
+          <h3 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 20px; color: #131a20; margin: 6px 0 12px">{{ d.t }}</h3>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px">
+            <span style="background: #002d4a; color: #ffffff; font-family: Inter, sans-serif; font-weight: 600; font-size: 11px; padding: 4px 10px; border-radius: 999px">{{ d.unit }}</span>
+            <span style="border: 1.5px solid #005a8c; color: #005a8c; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; padding: 3px 10px; border-radius: 999px; white-space: nowrap">{{ d.plat }}</span>
+          </div>
+          <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 2px; color: #647380; margin-bottom: 8px">FLOW</div>
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <sc-for list="{{ dInputs }}" as="it" hint-placeholder-count="2">
+              <div style="background: #e6f6ff; border: 1px solid #99d2e7; border-radius: 8px; padding: 8px 12px; font-family: Inter, sans-serif; font-size: 12px; color: #003f66; line-height: 1.45">{{ it }}</div>
+            </sc-for>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; margin: 5px 0"><div style="width: 2px; height: 10px; background: #647380"></div><div style="width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid #647380"></div></div>
+          <div style="background: #005a8c; border-radius: 10px; padding: 10px 14px">
+            <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 13.5px; color: #ffffff">{{ d.t }}</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #99d2e7; margin-top: 3px">{{ d.mech }}</div>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; margin: 5px 0"><div style="width: 2px; height: 10px; background: #647380"></div><div style="width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid #647380"></div></div>
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <sc-for list="{{ dOutputs }}" as="it" hint-placeholder-count="1">
+              <div style="background: #ffffff; border: 1.5px solid #002d4a; border-radius: 8px; padding: 8px 12px; font-family: Inter, sans-serif; font-size: 12px; color: #131a20; line-height: 1.45">{{ it }}</div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ hasAir }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 2px; color: #647380; margin: 18px 0 8px">TOUR PIPELINE — RUNS TWICE (IAH · HOU)</div>
+              <div style="display: flex; flex-direction: column; gap: 4px">
+                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8a99a6; width: 14px">a</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 11.5px; color: #003f66">Enplanement forecast → airport travel parties</span></div>
+                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8a99a6; width: 14px">b</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 11.5px; color: #003f66">Tour generation per party</span></div>
+                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8a99a6; width: 14px">c</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 11.5px; color: #003f66">Scheduling — time-of-day of each tour</span></div>
+                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8a99a6; width: 14px">d</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 11.5px; color: #003f66">Destination &amp; mode choice per tour</span></div>
+                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8a99a6; width: 14px">e</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 11.5px; color: #003f66">Tours converted to trips → OD matrices</span></div>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ hasTree }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 2px; color: #647380; margin: 18px 0 8px">NESTING STRUCTURE</div>
+              <div style="display: inline-block; background: #002d4a; color: #ffffff; padding: 5px 12px; border-radius: 6px; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 12px">Mode choice</div>
+              <div style="margin: 6px 0 0 10px; border-left: 2px solid #99d2e7; padding-left: 12px">
+                <div style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid #005a8c; color: #005a8c; font-family: Inter, sans-serif; font-weight: 600; font-size: 11.5px; padding: 3px 10px; border-radius: 6px; margin-top: 6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005a8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16 L5 9 h14 l2 7"></path><rect x="2" y="16" width="20" height="3" rx="1"></rect><circle cx="7" cy="20" r="1.6"></circle><circle cx="17" cy="20" r="1.6"></circle></svg>Auto</div>
+                <div style="margin: 4px 0 0 10px; border-left: 2px solid #cceeff; padding-left: 12px; font-family: Inter, sans-serif; font-size: 11.5px; color: #33404c; line-height: 1.7">Drive alone<br>Shared ride — 2 · 3 · 4+ persons</div>
+                <div style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid #005a8c; color: #005a8c; font-family: Inter, sans-serif; font-weight: 600; font-size: 11.5px; padding: 3px 10px; border-radius: 6px; margin-top: 10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005a8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="15" rx="2"></rect><line x1="4" y1="11" x2="20" y2="11"></line><circle cx="8.5" cy="20.5" r="1.4"></circle><circle cx="15.5" cy="20.5" r="1.4"></circle></svg>Transit</div>
+                <div style="margin: 4px 0 0 10px; border-left: 2px solid #cceeff; padding-left: 12px; font-family: Inter, sans-serif; font-size: 11.5px; color: #33404c; line-height: 1.7">Access: walk · park-n-ride · kiss-n-ride<br>× Local bus · Express bus · BRT · Commuter bus · Light rail · Commuter rail</div>
+                <div style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid #005a8c; color: #005a8c; font-family: Inter, sans-serif; font-weight: 600; font-size: 11.5px; padding: 3px 10px; border-radius: 6px; margin-top: 10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005a8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"></rect><line x1="10.5" y1="18.5" x2="13.5" y2="18.5"></line></svg>TNC</div>
+                <div style="margin: 4px 0 0 10px; border-left: 2px solid #cceeff; padding-left: 12px; font-family: Inter, sans-serif; font-size: 11.5px; color: #33404c; line-height: 1.7">Fare: booking + per-mile + per-minute · wait by area type</div>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ hasCal }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top: 16px; background: #fdecef; border: 1px solid #ffb3b3; border-radius: 10px; padding: 10px 12px">
+              <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: 2px; color: #a61f36; margin-bottom: 4px">CALIBRATION</div>
+              <div style="font-family: Inter, sans-serif; font-size: 12px; color: #33404c; line-height: 1.45">{{ dCal }}</div>
+            </div>
+          </sc-if>
+          <p style="font-family: Inter, sans-serif; font-size: 12.5px; color: #4a5764; line-height: 1.55; margin-top: 16px; text-wrap: pretty">{{ d.note }}</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ noD }}" hint-placeholder-val="{{ true }}">
+        <div>
+          <h3 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 17px; color: #131a20; margin: 0 0 6px">How to read this figure</h3>
+          <p style="font-family: Inter, sans-serif; font-size: 12.5px; color: #4a5764; line-height: 1.55; margin: 0 0 16px; text-wrap: pretty">Left → right is execution order. Top ↕ bottom is the decision unit each component operates on — resolution is chosen per component, not fixed for the whole model.</p>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 26px; height: 16px; background: #005a8c; border-radius: 4px; flex-shrink: 0"></span><span style="font-family: Inter, sans-serif; font-size: 12px; color: #33404c">AGENT — household &amp; trip records</span></div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 26px; height: 16px; background: #ffffff; border: 2px solid #002d4a; border-radius: 4px; flex-shrink: 0; box-sizing: border-box"></span><span style="font-family: Inter, sans-serif; font-size: 12px; color: #33404c">CUBE — matrices &amp; network</span></div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 26px; height: 16px; background: #ffffff; border: 2.5px solid #d7213f; border-radius: 4px; flex-shrink: 0; box-sizing: border-box"></span><span style="font-family: Inter, sans-serif; font-size: 12px; color: #33404c">Re-aggregation — the hybrid hinge</span></div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 16px; height: 16px; border: 2px solid #d7213f; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; display: flex; align-items: center; justify-content: center; margin: 0 5px"><span style="width: 5px; height: 5px; background: #d7213f; border-radius: 50%"></span></span><span style="font-family: Inter, sans-serif; font-size: 12px; color: #33404c">Calibration target (toggle above)</span></div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 26px; height: 0; border-top: 2.5px dashed #005a8c; flex-shrink: 0"></span><span style="font-family: Inter, sans-serif; font-size: 12px; color: #33404c">Feedback — AM &amp; MD skims only</span></div>
+          <p style="font-family: Inter, sans-serif; font-size: 12.5px; color: #647380; line-height: 1.55; margin-top: 16px; text-wrap: pretty">Click any node to zoom in and inspect its inputs, outputs and calibration. The tour plays on its own — pause anytime.</p>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+  <div style="background: #002d4a; color: #ffffff; padding: 13px 20px; display: flex; align-items: center; gap: 18px; min-height: 38px">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #99d2e7; flex-shrink: 0">{{ stepLabel }}</span>
+    <span style="font-family: Inter, sans-serif; font-size: 13.5px; line-height: 1.45; text-wrap: pretty">{{ cap }}</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1500,&quot;height&quot;:920},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Playback&quot;},&quot;stepSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:6,&quot;min&quot;:2.5,&quot;max&quot;:10,&quot;step&quot;:0.5,&quot;unit&quot;:&quot;s&quot;,&quot;section&quot;:&quot;Playback&quot;,&quot;tsType&quot;:&quot;number&quot;},&quot;grayscale&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Preview&quot;}}">
+class Component extends DCLogic {
+  state = { step: 0, playing: true, sel: null, view: null, calUser: null };
+  componentDidMount() {
+    if (this.props.autoplay === false) this.setState({ playing: false });
+    this._acc = 0;
+    this._iv = setInterval(() => {
+      if (!this.state.playing) return;
+      this._acc += 0.5;
+      const dur = this.props.stepSeconds ?? 6;
+      if (this._acc >= dur) {
+        this._acc = 0;
+        this.setState(s => ({ step: (s.step + 1) % Component.STEPS.length }));
+      }
+    }, 500);
+  }
+  componentWillUnmount() { clearInterval(this._iv); }
+  go(patch) { this._acc = 0; this.setState(patch); }
+  renderVals() {
+    const S = Component.STEPS, ND = Component.ND, E = Component.EDG, st = this.state;
+    const stepDef = S[st.step];
+    const focus = st.sel ? st.sel : (st.view === 'over' ? 'groups' : (st.view === 'full' ? null : stepDef.f));
+    const cam = st.view === 'over' ? { cx: 900, cy: 470, s: 0.92 }
+      : st.view === 'full' ? { cx: 900, cy: 470, s: 1 }
+      : st.sel ? Component.CAM[st.sel] : stepDef.cam;
+    const sc = cam.s, tx = 900 - sc * cam.cx, ty = 470 - sc * cam.cy;
+    const hl = {};
+    Object.keys(ND).forEach(id => { hl[id] = { opacity: focus === id ? 1 : 0, transition: 'opacity .45s' }; });
+    const pulses = (!st.sel && !st.view && stepDef.pulse) || [];
+    const ps = i => ({ opacity: pulses[i] ? 1 : 0, transition: 'opacity .3s', animation: 'dashflow 1.1s linear infinite' });
+    const calOn = st.calUser === null ? !!stepDef.cal : st.calUser;
+    const pick = {};
+    Object.keys(ND).forEach(id => { pick[id] = () => { this._acc = 0; this.setState({ sel: id, playing: false, view: null }); }; });
+    const dId = st.sel || (focus && ND[focus] ? focus : null);
+    const d = dId ? ND[dId] : null;
+    return {
+      camStyle: { transform: 'translate(' + tx + 'px,' + ty + 'px) scale(' + sc + ')', transformOrigin: '0 0', transition: 'transform 1.15s cubic-bezier(.35,0,.25,1)' },
+      hl, pick, calOn,
+      switchProps: { checked: calOn, onChange: () => this.setState({ calUser: !calOn }) },
+      gStyle: { opacity: focus === 'groups' ? 1 : 0, transition: 'opacity .5s' },
+      calStyle: { opacity: calOn ? 1 : 0, transition: 'opacity .6s' },
+      p1: pulses[0] ? E[pulses[0]] : 'M-99,-99', p2: pulses[1] ? E[pulses[1]] : 'M-99,-99',
+      p1s: ps(0), p2s: ps(1),
+      cap: st.sel ? ND[st.sel].t + ' — details at right. Press Play to resume the tour.' : (st.view ? 'Paused — press Play to resume the guided tour, or click any node.' : stepDef.cap),
+      stepLabel: String(st.step + 1).padStart(2, '0') + '/' + S.length,
+      playLabel: st.playing ? 'Pause' : 'Play',
+      hasD: !!d, noD: !d, d: d || {}, hasTree: dId === 'mc', hasAir: dId === 'air',
+      dInputs: d ? d.inputs : [], dOutputs: d ? d.outputs : [],
+      hasCal: !!(d && d.cal), dCal: d && d.cal ? d.cal : '',
+      togglePlay: () => this.go({ playing: !this.state.playing, sel: null, view: null }),
+      restart: () => this.go({ step: 0, playing: true, sel: null, view: null, calUser: null }),
+      next: () => this.go({ step: (this.state.step + 1) % S.length, sel: null, view: null }),
+      prev: () => this.go({ step: (this.state.step - 1 + S.length) % S.length, sel: null, view: null }),
+      viewFull: () => this.go({ view: 'full', playing: false, sel: null }),
+      toggleCal: () => this.setState({ calUser: !calOn }),
+      grayStyle: Object.assign({ height: '100vh', display: 'flex', flexDirection: 'column', background: '#f5f7f9' }, (this.props.grayscale ?? false) ? { filter: 'grayscale(1)' } : {})
+    };
+  }
+}
+const FULL = { cx: 900, cy: 470, s: 1 };
+Component.STEPS = [
+  { f: null, cam: FULL, cap: 'One run, many resolutions. Vertical position is the decision unit: the chain descends from zonal totals to households, then climbs back to matrices for assignment.' },
+  { f: 'groups', cam: { cx: 900, cy: 470, s: 0.94 }, cap: 'Three parts: a regional demand chain running on AGENT, two tour-based airport submodels, and matrix-based assignment in CUBE.' },
+  { f: 'demo', cam: { cx: 430, cy: 630, s: 1.4 }, pulse: ['e1'], cap: '1 · Zonal control totals are synthesized into discrete households — the model leaves matrix space immediately.' },
+  { f: 'tg', cam: { cx: 560, cy: 660, s: 1.4 }, pulse: ['e2'], cap: '2 · Cross-classification rates give each household whole trips — home-based journeys are carried as PA records, i.e. tours; fractions removed by binary-choice integerization.' },
+  { f: 'td', cam: { cx: 750, cy: 610, s: 1.4 }, pulse: ['e3'], cap: '3 · Location choice in AGENT: the tour decides for home-based purposes, the trip for non-home-based. Legacy friction and K-factors enter the utility in log form.' },
+  { f: 'mc', cam: { cx: 960, cy: 590, s: 1.4 }, pulse: ['e4'], cap: '4 · Nested logit at the same resolution — tours (HB), trips (NHB) — over 4 auto + 6 transit modes by 3 access modes. BRT and TNC added in 2023.' },
+  { f: 'reagg', cam: { cx: 1125, cy: 440, s: 1.25 }, pulse: ['e5'], cap: '5 · The hybrid hinge: individual records are expanded by inverse sampling rate into OD matrices by purpose, mode and income.' },
+  { f: 'air', cam: { cx: 660, cy: 420, s: 1.3 }, pulse: [], cap: 'A · In parallel at tour depth: IAH and HOU packages — built in ActivitySim, converted to AGENT — turn enplanements into scheduled, located, moded trips.' },
+  { f: 'merge', cam: { cx: 1230, cy: 350, s: 1.35 }, pulse: ['e6', 'e9'], cap: '6 · Airport tour demand merges with regional matrices here — one architecture carrying two resolutions.' },
+  { f: 'tod', cam: { cx: 1450, cy: 300, s: 1.4 }, pulse: ['e7'], cap: '7 · Daily matrices split into AM, midday, PM and overnight periods.' },
+  { f: 'asg', cam: { cx: 1580, cy: 230, s: 1.3 }, pulse: ['e8'], cap: '8 · Multiclass generalized-cost user equilibrium, solved by bi-conjugate Frank–Wolfe.' },
+  { f: null, cam: { cx: 1150, cy: 400, s: 0.95 }, pulse: ['e10', 'e11'], cap: 'Feedback is deliberately narrow: only AM and midday skims return to distribution and mode choice. PM and overnight are assigned after convergence.' },
+  { f: null, cam: FULL, cal: true, cap: 'Calibration: AGENT auto-calibrates generation, distribution and mode choice against the 2022–24 HTS and 2022 on-board survey; assignment validates against counts and VMT. Disaggregation multiplies the targets.' },
+  { f: null, cam: FULL, cap: 'Household → trip → matrix → network link: resolution is a design variable, spent component by component where behavior is modeled.' }
+];
+Component.EDG = {
+  e1: 'M260,320 L260,700', e2: 'M360,740 L381,740', e3: 'M585,740 L690,740 Q710,740 710,721 L710,620',
+  e4: 'M810,580 L831,580', e5: 'M1035,580 L1056,580', e6: 'M1190,290 L1206,290',
+  e7: 'M1380,290 L1396,290', e8: 'M1550,290 L1590,290 Q1610,290 1610,271 L1610,190',
+  e9: 'M986,430 L998,430 Q1006,430 1006,422 L1006,238 Q1006,230 1014,230 L1287,230 Q1295,230 1295,238 L1295,250',
+  e10: 'M1670,190 L1670,497 Q1670,505 1662,505 L943,505 Q935,505 935,513 L935,540',
+  e11: 'M1670,190 L1670,497 Q1670,505 1662,505 L718,505 Q710,505 710,513 L710,540'
+};
+Component.CAM = {
+  demo: { cx: 430, cy: 630, s: 1.4 }, tg: { cx: 560, cy: 660, s: 1.4 }, td: { cx: 750, cy: 610, s: 1.4 },
+  mc: { cx: 960, cy: 590, s: 1.4 }, reagg: { cx: 1125, cy: 440, s: 1.25 }, air: { cx: 660, cy: 420, s: 1.3 },
+  merge: { cx: 1230, cy: 350, s: 1.35 }, tod: { cx: 1450, cy: 300, s: 1.4 }, asg: { cx: 1580, cy: 230, s: 1.3 }
+};
+Component.ND = {
+  demo: { t: 'Population synthesis', ord: '1 / 8', unit: 'Household', plat: 'AGENT', mech: 'synthesis from zonal control totals',
+    inputs: ['Zonal controls: households by size, workers, 5 income groups', 'Employment by 7 categories'],
+    outputs: ['Synthetic households with person records'],
+    note: 'The demographic scenario is stated in aggregate, but the model immediately descends to the household. Every downstream demand step operates on these discrete records, not on zone totals.' },
+  tg: { t: 'Trip generation', ord: '2 / 8', unit: 'Household', plat: 'AGENT', mech: 'cross-classification · binary-choice integerization',
+    inputs: ['Synthetic households', 'Rates from 2022–24 HTS (size × workers × income)'],
+    outputs: ['HB: production–attraction records = tours', 'NHB: individual trip records'],
+    cal: 'AGENT automated calibration of trip rates against 2022–24 household travel survey targets; a dedicated step validates integerized totals against fractional expectations each run.',
+    note: 'Eleven internal purposes, home-based work by five income groups among them. Home-based journeys are carried as PA records — home-to-destination-to-home tours. Fractional rates become whole trips by binary-choice integerization, balanced within TAZ × income segments.' },
+  td: { t: 'Trip distribution', ord: '3 / 8', unit: 'Tour (HB) · Trip (NHB)', plat: 'AGENT', mech: 'location choice · friction + K-factors in log form',
+    inputs: ['HB tours + NHB trips', 'Impedance: MD time (HBW: AM composite by income)', 'Congested AM & MD skims (feedback)'],
+    outputs: ['Chosen destination TAZ per tour / trip'],
+    cal: 'Trip-length and destination targets from the 2022–24 HTS.',
+    note: 'The tour is the decision maker for home-based purposes, the trip for non-home-based. Legacy ATOM3 friction and K-factors enter the utility through their logarithms — an exact translation of the gravity model into choice form, preserving two decades of calibration.' },
+  mc: { t: 'Mode choice', ord: '4 / 8', unit: 'Tour (HB) · Trip (NHB)', plat: 'AGENT', mech: 'nested logit: auto / transit / TNC',
+    inputs: ['Located tours & trips', 'Highway & transit skims'],
+    outputs: ['Mode per record: 4 auto + 6 transit × 3 access'],
+    cal: 'Mode shares against 2022–24 HTS plus the 2022 transit on-board survey; separate steps assert intrazonal mode shares against intrazonal targets.',
+    note: 'Applied at the same resolution as distribution — tours for home-based, trips for non-home-based. BRT and TNC added in 2023; TNC fare = booking fee + per-mile + per-minute charges with area-type wait times.' },
+  reagg: { t: 'Re-aggregation', ord: '5 / 8', unit: 'Trip → OD matrix', plat: 'AGENT → CUBE', mech: 'expand by 1 / sampling rate',
+    inputs: ['Individual records with destination and mode'],
+    outputs: ['OD matrices by purpose, mode, income'],
+    note: 'The hybrid design decision (Vyas et al.): records are expanded by the inverse sampling rate and folded back into matrix form. Resolution is spent where behavior is modeled — and given back where it is not needed.' },
+  air: { t: 'Airport submodels', ord: 'A — parallel', unit: 'Tour', plat: 'AGENT · ex-ActivitySim', mech: 'parties → tours → scheduling → dest & mode',
+    inputs: ['Enplanement forecasts for IAH and HOU', 'Highway & transit skims'],
+    outputs: ['Airport trip matrices → matrix combination'],
+    note: 'Two structurally identical tour-based packages, one per airport, originally built in ActivitySim and converted to AGENT model packages. The airport travel party — not the household — is the decision maker: parties generate tours, tours are scheduled, given destinations and modes, then broken into trips. They sit at tour depth — a different resolution than the regional chain — and rejoin it in matrix form before assignment.' },
+  merge: { t: 'Matrix combination', ord: '6 / 8', unit: 'OD matrix', plat: 'CUBE', mech: 'matrix addition',
+    inputs: ['Regional OD matrices (purpose, mode, income)', 'Airport matrices from IAH and HOU'],
+    outputs: ['Combined daily demand matrices'],
+    note: 'The merge point is the second key detail of the architecture: household-based regional demand and tour-based airport demand meet here in common matrix form — one model, two resolutions.' },
+  tod: { t: 'Time of day', ord: '7 / 8', unit: 'OD matrix', plat: 'CUBE', mech: 'diurnal factors from 2022–24 HTS',
+    inputs: ['Combined daily matrices'],
+    outputs: ['Period matrices: AM, midday, PM, overnight'],
+    note: 'Diurnal trip-table factors, updated from the 2022–2024 survey, split daily demand into four assignment periods.' },
+  asg: { t: 'Assignment', ord: '8 / 8', unit: 'Network link', plat: 'CUBE', mech: 'generalized-cost UE · bi-conjugate Frank–Wolfe',
+    inputs: ['Period matrices (5 income groups → 3 VOT tiers)', 'Highway & transit networks'],
+    outputs: ['Link volumes + congested skims'],
+    cal: 'Validation against traffic counts and observed VMT; assignment gap and relative gap converged to 0.0001.',
+    note: 'Multiclass generalized-cost user equilibrium via bi-conjugate Frank–Wolfe, chosen for faster computation and tighter convergence. AM and midday skims feed back (MSA on link volumes); PM and overnight are assigned once after convergence.' }
+};
+</script>
+</body>
+</html>
