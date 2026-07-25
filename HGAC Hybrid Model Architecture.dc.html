@@ -25,21 +25,21 @@
 <div style="{{ grayStyle }}">
   <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 12px 20px; background: #ffffff; border-bottom: 1px solid #d4dbe2">
     <div style="display: flex; align-items: center; gap: 12px">
-      <div style="width: 34px; height: 34px; background: #d7213f; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 11px; letter-spacing: .5px">TM</div>
+      <div style="width: 52px; height: 52px; flex-shrink: 0; background: #d7213f; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #ffffff; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 18px; letter-spacing: .5px">TM</div>
       <div>
-        <div style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 17px; color: #131a20">H-GAC 2023 hybrid model</div>
-        <div style="font-family: Inter, sans-serif; font-size: 11.5px; color: #647380; white-space: nowrap">Execution order → · decision unit ↕</div>
+        <div style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 30px; color: #131a20">H-GAC 2023 hybrid model</div>
+        <div style="font-family: Inter, sans-serif; font-size: 15px; color: #647380; white-space: nowrap">Execution order → · decision unit ↕</div>
       </div>
     </div>
     <div style="flex: 1"></div>
     <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
-      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="primary" size="sm" onClick="{{ togglePlay }}" hint-size="90px,36px">{{ playLabel }}</x-import>
-      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="secondary" size="sm" onClick="{{ prev }}" hint-size="60px,36px"><span style="white-space: nowrap">‹ Back</span></x-import>
-      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="secondary" size="sm" onClick="{{ next }}" hint-size="60px,36px"><span style="white-space: nowrap">Next ›</span></x-import>
-      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="ghost" size="sm" onClick="{{ restart }}" hint-size="70px,36px">Restart</x-import>
-      <div style="width: 1px; height: 24px; background: #d4dbe2"></div>
-      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="secondary" size="sm" onClick="{{ viewFull }}" hint-size="90px,36px"><span style="white-space: nowrap">Full view</span></x-import>
-      <div style="width: 1px; height: 24px; background: #d4dbe2"></div>
+      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="primary" size="md" onClick="{{ togglePlay }}" hint-size="120px,44px">{{ playLabel }}</x-import>
+      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="secondary" size="md" onClick="{{ prev }}" hint-size="85px,44px"><span style="white-space: nowrap">‹ Back</span></x-import>
+      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="secondary" size="md" onClick="{{ next }}" hint-size="85px,44px"><span style="white-space: nowrap">Next ›</span></x-import>
+      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="ghost" size="md" onClick="{{ restart }}" hint-size="95px,44px">Restart</x-import>
+      <div style="width: 1px; height: 34px; background: #d4dbe2"></div>
+      <x-import component-from-global-scope="HGACDesignSystem_33204c.Button" variant="secondary" size="md" onClick="{{ viewFull }}" hint-size="120px,44px"><span style="white-space: nowrap">Full view</span></x-import>
+      <div style="width: 1px; height: 34px; background: #d4dbe2"></div>
       <x-import component-from-global-scope="HGACDesignSystem_33204c.Switch" label="Calibration" dc-props="{{ switchProps }}" hint-size="120px,28px"></x-import>
     </div>
   </div>
@@ -202,7 +202,7 @@
           </g>
 
           <g style="{{ calStyle }}" pointer-events="none">
-            <rect x="170" y="60" width="560" height="58" rx="10" fill="#fdecef" stroke="#d7213f" stroke-width="1.5"></rect>
+            <rect x="170" y="60" width="672" height="58" rx="10" fill="#fdecef" stroke="#d7213f" stroke-width="1.5"></rect>
             <text x="188" y="84" font-family="Montserrat, sans-serif" font-weight="700" font-size="12" letter-spacing="1.5" fill="#a61f36">AGENT AUTOMATED CALIBRATION</text>
             <text x="188" y="103" font-family="Inter, sans-serif" font-size="12" fill="#33404c">Generation, distribution, mode choice vs 2022–24 HTS + 2022 on-board survey · assignment vs counts + VMT.</text>
             <g transform="translate(585,701)" style="animation: calpulse 2s ease-in-out infinite"><circle r="12" fill="#ffffff" stroke="#d7213f" stroke-width="2.5"></circle><circle r="6" fill="none" stroke="#d7213f" stroke-width="1.5"></circle><circle r="2" fill="#d7213f"></circle></g>
@@ -213,84 +213,84 @@
         </g>
       </svg>
     </div>
-    <div style="width: 360px; flex-shrink: 0; border-left: 1px solid #d4dbe2; background: #ffffff; padding: 20px 22px; overflow-y: auto">
+    <div style="width: 430px; flex-shrink: 0; border-left: 1px solid #d4dbe2; background: #ffffff; padding: 20px 22px; overflow-y: auto">
       <sc-if value="{{ hasD }}" hint-placeholder-val="{{ false }}">
         <div>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8a99a6; letter-spacing: 2px">STEP {{ d.ord }}</div>
-          <h3 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 20px; color: #131a20; margin: 6px 0 12px">{{ d.t }}</h3>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #8a99a6; letter-spacing: 2px">STEP {{ d.ord }}</div>
+          <h3 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 24px; color: #131a20; margin: 6px 0 12px">{{ d.t }}</h3>
           <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px">
-            <span style="background: #002d4a; color: #ffffff; font-family: Inter, sans-serif; font-weight: 600; font-size: 11px; padding: 4px 10px; border-radius: 999px">{{ d.unit }}</span>
-            <span style="border: 1.5px solid #005a8c; color: #005a8c; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; padding: 3px 10px; border-radius: 999px; white-space: nowrap">{{ d.plat }}</span>
+            <span style="background: #002d4a; color: #ffffff; font-family: Inter, sans-serif; font-weight: 600; font-size: 13px; padding: 4px 10px; border-radius: 999px">{{ d.unit }}</span>
+            <span style="border: 1.5px solid #005a8c; color: #005a8c; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; padding: 3px 10px; border-radius: 999px; white-space: nowrap">{{ d.plat }}</span>
           </div>
-          <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 2px; color: #647380; margin-bottom: 8px">FLOW</div>
+          <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 2px; color: #647380; margin-bottom: 8px">FLOW</div>
           <div style="display: flex; flex-direction: column; gap: 6px">
             <sc-for list="{{ dInputs }}" as="it" hint-placeholder-count="2">
-              <div style="background: #e6f6ff; border: 1px solid #99d2e7; border-radius: 8px; padding: 8px 12px; font-family: Inter, sans-serif; font-size: 12px; color: #003f66; line-height: 1.45">{{ it }}</div>
+              <div style="background: #e6f6ff; border: 1px solid #99d2e7; border-radius: 8px; padding: 8px 12px; font-family: Inter, sans-serif; font-size: 14.5px; color: #003f66; line-height: 1.45">{{ it }}</div>
             </sc-for>
           </div>
           <div style="display: flex; flex-direction: column; align-items: center; margin: 5px 0"><div style="width: 2px; height: 10px; background: #647380"></div><div style="width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid #647380"></div></div>
           <div style="background: #005a8c; border-radius: 10px; padding: 10px 14px">
-            <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 13.5px; color: #ffffff">{{ d.t }}</div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #99d2e7; margin-top: 3px">{{ d.mech }}</div>
+            <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 16px; color: #ffffff">{{ d.t }}</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: #99d2e7; margin-top: 3px">{{ d.mech }}</div>
           </div>
           <div style="display: flex; flex-direction: column; align-items: center; margin: 5px 0"><div style="width: 2px; height: 10px; background: #647380"></div><div style="width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid #647380"></div></div>
           <div style="display: flex; flex-direction: column; gap: 6px">
             <sc-for list="{{ dOutputs }}" as="it" hint-placeholder-count="1">
-              <div style="background: #ffffff; border: 1.5px solid #002d4a; border-radius: 8px; padding: 8px 12px; font-family: Inter, sans-serif; font-size: 12px; color: #131a20; line-height: 1.45">{{ it }}</div>
+              <div style="background: #ffffff; border: 1.5px solid #002d4a; border-radius: 8px; padding: 8px 12px; font-family: Inter, sans-serif; font-size: 14.5px; color: #131a20; line-height: 1.45">{{ it }}</div>
             </sc-for>
           </div>
           <sc-if value="{{ hasAir }}" hint-placeholder-val="{{ false }}">
             <div>
-              <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 2px; color: #647380; margin: 18px 0 8px">TOUR PIPELINE — RUNS TWICE (IAH · HOU)</div>
+              <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 2px; color: #647380; margin: 18px 0 8px">TOUR PIPELINE — RUNS TWICE (IAH · HOU)</div>
               <div style="display: flex; flex-direction: column; gap: 4px">
-                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8a99a6; width: 14px">a</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 11.5px; color: #003f66">Enplanement forecast → airport travel parties</span></div>
-                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8a99a6; width: 14px">b</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 11.5px; color: #003f66">Tour generation per party</span></div>
-                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8a99a6; width: 14px">c</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 11.5px; color: #003f66">Scheduling — time-of-day of each tour</span></div>
-                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8a99a6; width: 14px">d</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 11.5px; color: #003f66">Destination &amp; mode choice per tour</span></div>
-                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8a99a6; width: 14px">e</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 11.5px; color: #003f66">Tours converted to trips → OD matrices</span></div>
+                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8a99a6; width: 14px">a</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 14px; color: #003f66">Enplanement forecast → airport travel parties</span></div>
+                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8a99a6; width: 14px">b</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 14px; color: #003f66">Tour generation per party</span></div>
+                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8a99a6; width: 14px">c</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 14px; color: #003f66">Scheduling — time-of-day of each tour</span></div>
+                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8a99a6; width: 14px">d</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 14px; color: #003f66">Destination &amp; mode choice per tour</span></div>
+                <div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8a99a6; width: 14px">e</span><span style="flex: 1; border: 1.5px solid #005a8c; border-radius: 7px; padding: 5px 10px; font-family: Inter, sans-serif; font-size: 14px; color: #003f66">Tours converted to trips → OD matrices</span></div>
               </div>
             </div>
           </sc-if>
           <sc-if value="{{ hasTree }}" hint-placeholder-val="{{ false }}">
             <div>
-              <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 2px; color: #647380; margin: 18px 0 8px">NESTING STRUCTURE</div>
-              <div style="display: inline-block; background: #002d4a; color: #ffffff; padding: 5px 12px; border-radius: 6px; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 12px">Mode choice</div>
+              <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 2px; color: #647380; margin: 18px 0 8px">NESTING STRUCTURE</div>
+              <div style="display: inline-block; background: #002d4a; color: #ffffff; padding: 5px 12px; border-radius: 6px; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 14.5px">Mode choice</div>
               <div style="margin: 6px 0 0 10px; border-left: 2px solid #99d2e7; padding-left: 12px">
-                <div style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid #005a8c; color: #005a8c; font-family: Inter, sans-serif; font-weight: 600; font-size: 11.5px; padding: 3px 10px; border-radius: 6px; margin-top: 6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005a8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16 L5 9 h14 l2 7"></path><rect x="2" y="16" width="20" height="3" rx="1"></rect><circle cx="7" cy="20" r="1.6"></circle><circle cx="17" cy="20" r="1.6"></circle></svg>Auto</div>
-                <div style="margin: 4px 0 0 10px; border-left: 2px solid #cceeff; padding-left: 12px; font-family: Inter, sans-serif; font-size: 11.5px; color: #33404c; line-height: 1.7">Drive alone<br>Shared ride — 2 · 3 · 4+ persons</div>
-                <div style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid #005a8c; color: #005a8c; font-family: Inter, sans-serif; font-weight: 600; font-size: 11.5px; padding: 3px 10px; border-radius: 6px; margin-top: 10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005a8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="15" rx="2"></rect><line x1="4" y1="11" x2="20" y2="11"></line><circle cx="8.5" cy="20.5" r="1.4"></circle><circle cx="15.5" cy="20.5" r="1.4"></circle></svg>Transit</div>
-                <div style="margin: 4px 0 0 10px; border-left: 2px solid #cceeff; padding-left: 12px; font-family: Inter, sans-serif; font-size: 11.5px; color: #33404c; line-height: 1.7">Access: walk · park-n-ride · kiss-n-ride<br>× Local bus · Express bus · BRT · Commuter bus · Light rail · Commuter rail</div>
-                <div style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid #005a8c; color: #005a8c; font-family: Inter, sans-serif; font-weight: 600; font-size: 11.5px; padding: 3px 10px; border-radius: 6px; margin-top: 10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005a8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"></rect><line x1="10.5" y1="18.5" x2="13.5" y2="18.5"></line></svg>TNC</div>
-                <div style="margin: 4px 0 0 10px; border-left: 2px solid #cceeff; padding-left: 12px; font-family: Inter, sans-serif; font-size: 11.5px; color: #33404c; line-height: 1.7">Fare: booking + per-mile + per-minute · wait by area type</div>
+                <div style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid #005a8c; color: #005a8c; font-family: Inter, sans-serif; font-weight: 600; font-size: 14px; padding: 3px 10px; border-radius: 6px; margin-top: 6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005a8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16 L5 9 h14 l2 7"></path><rect x="2" y="16" width="20" height="3" rx="1"></rect><circle cx="7" cy="20" r="1.6"></circle><circle cx="17" cy="20" r="1.6"></circle></svg>Auto</div>
+                <div style="margin: 4px 0 0 10px; border-left: 2px solid #cceeff; padding-left: 12px; font-family: Inter, sans-serif; font-size: 14px; color: #33404c; line-height: 1.7">Drive alone<br>Shared ride — 2 · 3 · 4+ persons</div>
+                <div style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid #005a8c; color: #005a8c; font-family: Inter, sans-serif; font-weight: 600; font-size: 14px; padding: 3px 10px; border-radius: 6px; margin-top: 10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005a8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="15" rx="2"></rect><line x1="4" y1="11" x2="20" y2="11"></line><circle cx="8.5" cy="20.5" r="1.4"></circle><circle cx="15.5" cy="20.5" r="1.4"></circle></svg>Transit</div>
+                <div style="margin: 4px 0 0 10px; border-left: 2px solid #cceeff; padding-left: 12px; font-family: Inter, sans-serif; font-size: 14px; color: #33404c; line-height: 1.7">Access: walk · park-n-ride · kiss-n-ride<br>× Local bus · Express bus · BRT · Commuter bus · Light rail · Commuter rail</div>
+                <div style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid #005a8c; color: #005a8c; font-family: Inter, sans-serif; font-weight: 600; font-size: 14px; padding: 3px 10px; border-radius: 6px; margin-top: 10px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005a8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"></rect><line x1="10.5" y1="18.5" x2="13.5" y2="18.5"></line></svg>TNC</div>
+                <div style="margin: 4px 0 0 10px; border-left: 2px solid #cceeff; padding-left: 12px; font-family: Inter, sans-serif; font-size: 14px; color: #33404c; line-height: 1.7">Fare: booking + per-mile + per-minute · wait by area type</div>
               </div>
             </div>
           </sc-if>
           <sc-if value="{{ hasCal }}" hint-placeholder-val="{{ false }}">
             <div style="margin-top: 16px; background: #fdecef; border: 1px solid #ffb3b3; border-radius: 10px; padding: 10px 12px">
-              <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: 2px; color: #a61f36; margin-bottom: 4px">CALIBRATION</div>
-              <div style="font-family: Inter, sans-serif; font-size: 12px; color: #33404c; line-height: 1.45">{{ dCal }}</div>
+              <div style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 2px; color: #a61f36; margin-bottom: 4px">CALIBRATION</div>
+              <div style="font-family: Inter, sans-serif; font-size: 14.5px; color: #33404c; line-height: 1.45">{{ dCal }}</div>
             </div>
           </sc-if>
-          <p style="font-family: Inter, sans-serif; font-size: 12.5px; color: #4a5764; line-height: 1.55; margin-top: 16px; text-wrap: pretty">{{ d.note }}</p>
+          <p style="font-family: Inter, sans-serif; font-size: 15px; color: #4a5764; line-height: 1.55; margin-top: 16px; text-wrap: pretty">{{ d.note }}</p>
         </div>
       </sc-if>
       <sc-if value="{{ noD }}" hint-placeholder-val="{{ true }}">
         <div>
-          <h3 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 17px; color: #131a20; margin: 0 0 6px">How to read this figure</h3>
-          <p style="font-family: Inter, sans-serif; font-size: 12.5px; color: #4a5764; line-height: 1.55; margin: 0 0 16px; text-wrap: pretty">Left → right is execution order. Top ↕ bottom is the decision unit each component operates on — resolution is chosen per component, not fixed for the whole model.</p>
-          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 26px; height: 16px; background: #005a8c; border-radius: 4px; flex-shrink: 0"></span><span style="font-family: Inter, sans-serif; font-size: 12px; color: #33404c">AGENT — household &amp; trip records</span></div>
-          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 26px; height: 16px; background: #ffffff; border: 2px solid #002d4a; border-radius: 4px; flex-shrink: 0; box-sizing: border-box"></span><span style="font-family: Inter, sans-serif; font-size: 12px; color: #33404c">CUBE — matrices &amp; network</span></div>
-          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 26px; height: 16px; background: #ffffff; border: 2.5px solid #d7213f; border-radius: 4px; flex-shrink: 0; box-sizing: border-box"></span><span style="font-family: Inter, sans-serif; font-size: 12px; color: #33404c">Re-aggregation — the hybrid hinge</span></div>
-          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 16px; height: 16px; border: 2px solid #d7213f; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; display: flex; align-items: center; justify-content: center; margin: 0 5px"><span style="width: 5px; height: 5px; background: #d7213f; border-radius: 50%"></span></span><span style="font-family: Inter, sans-serif; font-size: 12px; color: #33404c">Calibration target (toggle above)</span></div>
-          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 26px; height: 0; border-top: 2.5px dashed #005a8c; flex-shrink: 0"></span><span style="font-family: Inter, sans-serif; font-size: 12px; color: #33404c">Feedback — AM &amp; MD skims only</span></div>
-          <p style="font-family: Inter, sans-serif; font-size: 12.5px; color: #647380; line-height: 1.55; margin-top: 16px; text-wrap: pretty">Click any node to zoom in and inspect its inputs, outputs and calibration. The tour plays on its own — pause anytime.</p>
+          <h3 style="font-family: Montserrat, sans-serif; font-weight: 800; font-size: 21px; color: #131a20; margin: 0 0 6px">How to read this figure</h3>
+          <p style="font-family: Inter, sans-serif; font-size: 15px; color: #4a5764; line-height: 1.55; margin: 0 0 16px; text-wrap: pretty">Left → right is execution order. Top ↕ bottom is the decision unit each component operates on — resolution is chosen per component, not fixed for the whole model.</p>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 26px; height: 16px; background: #005a8c; border-radius: 4px; flex-shrink: 0"></span><span style="font-family: Inter, sans-serif; font-size: 14.5px; color: #33404c">AGENT — household &amp; trip records</span></div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 26px; height: 16px; background: #ffffff; border: 2px solid #002d4a; border-radius: 4px; flex-shrink: 0; box-sizing: border-box"></span><span style="font-family: Inter, sans-serif; font-size: 14.5px; color: #33404c">CUBE — matrices &amp; network</span></div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 26px; height: 16px; background: #ffffff; border: 2.5px solid #d7213f; border-radius: 4px; flex-shrink: 0; box-sizing: border-box"></span><span style="font-family: Inter, sans-serif; font-size: 14.5px; color: #33404c">Re-aggregation — the hybrid hinge</span></div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 16px; height: 16px; border: 2px solid #d7213f; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; display: flex; align-items: center; justify-content: center; margin: 0 5px"><span style="width: 5px; height: 5px; background: #d7213f; border-radius: 50%"></span></span><span style="font-family: Inter, sans-serif; font-size: 14.5px; color: #33404c">Calibration target (toggle above)</span></div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0"><span style="width: 26px; height: 0; border-top: 2.5px dashed #005a8c; flex-shrink: 0"></span><span style="font-family: Inter, sans-serif; font-size: 14.5px; color: #33404c">Feedback — AM &amp; MD skims only</span></div>
+          <p style="font-family: Inter, sans-serif; font-size: 15px; color: #647380; line-height: 1.55; margin-top: 16px; text-wrap: pretty">Click any node to zoom in and inspect its inputs, outputs and calibration. The tour plays on its own — pause anytime.</p>
         </div>
       </sc-if>
     </div>
   </div>
-  <div style="background: #002d4a; color: #ffffff; padding: 13px 20px; display: flex; align-items: center; gap: 18px; min-height: 38px">
-    <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #99d2e7; flex-shrink: 0">{{ stepLabel }}</span>
-    <span style="font-family: Inter, sans-serif; font-size: 13.5px; line-height: 1.45; text-wrap: pretty">{{ cap }}</span>
+  <div style="background: #002d4a; color: #ffffff; padding: 16px 20px; display: flex; align-items: center; gap: 18px; min-height: 46px">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 16px; color: #99d2e7; flex-shrink: 0">{{ stepLabel }}</span>
+    <span style="font-family: Inter, sans-serif; font-size: 20px; line-height: 1.45; text-wrap: pretty">{{ cap }}</span>
   </div>
 </div>
 </x-dc>
